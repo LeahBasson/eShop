@@ -18,9 +18,9 @@ app.use(router , express.static('./static'),
 })
 )
 
-router.use(bodyParser.json()), //to not call bodyParser on every endpoint, register once using 'router.use'
+router.use(bodyParser.json()), //to not call bodyParser on each and every endpoint, register once using 'router.use' // the body parser is used to pass the body as json. when you sending data from the database you need to have a pipeline body parser is that pipeline // when the user sends a request you need to have a body parser.
 
-//Endpoint
+//Endpoint // the get endpoint allows you to retrieve something
 router.get('^/$|/eShop', (req, res) => {
     res.status(200).sendFile(path.resolve('./static/html/index.html'))
 })
@@ -28,7 +28,7 @@ router.get('^/$|/eShop', (req, res) => {
 
 router.get('/users', (req, res) => {
     try {
-        const strQry = `SELECT firstName, lastName, age, emailAdd 
+        const strQry = `SELECT firstName, lastName, age, emailAdd, UserRole, ProfileURL
         FROM Users;`
 
         db.query(strQry, (err, results) => {
@@ -51,7 +51,7 @@ router.get('/users', (req, res) => {
 router.get('/users/:id', (req, res) => {
     try{
         const stryQry = `
-        SELECT userID, firstName, lastName, age, emailAdd
+        SELECT userID, firstName, lastName, age, emailAdd, UserRole, ProfileURL
         FROM Users WHERE userID = ${req.params.id};`
         db.query(stryQry, (err, result) => {
             if(err) throw new Error('Issue when retrieving a user.')
@@ -68,6 +68,7 @@ router.get('/users/:id', (req, res) => {
     }
 })
 
+//post is more secure than get
 router.post('/register', async (req, res) => {
     try {
         let data = req.body
@@ -81,7 +82,7 @@ router.post('/register', async (req, res) => {
         let strQry = `
         INSERT INTO Users
         SET ? ;   
-        `  // VALUES (?, ? , ?, ?)
+        `  // or you can use this VALUES (?, ? , ?, ?)
         db.query(strQry, [data], (err) =>{
             if(err) {
                 res.json({
@@ -105,6 +106,7 @@ router.post('/register', async (req, res) => {
     }
 )
 
+//put - everytime you send a request to update you send a new request. Thats why you use patch so that you can work with the same request when updating.
 router.patch('/user/:id', async (req, res) => {
     try {
         let data = req.body
@@ -157,7 +159,7 @@ router.post('/login', (req, res) => {
         const { emailAdd, pwd } = req.body
         const strQry = `
         SELECT userID, firstName, lastName, age,
-        emailAdd, pwd
+        emailAdd, pwd, UserRole, ProfileURL
         FROM Users
         WHERE emailAdd = '${emailAdd}';
         `
