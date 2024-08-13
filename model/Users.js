@@ -46,7 +46,7 @@ class Users {
         })
     }
 
-    async regiterUser(req, res) {
+    async registerUser(req, res) {
         try {
             let data = req.body
            
