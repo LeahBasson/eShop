@@ -2,15 +2,16 @@ import { connection as db} from '../config/index.js'
 
 class Products {
     fetchProducts(req, res) {
-        try {
+        try {           //try statement is used to handle errors
             const strQry = `SELECT productID, prodName, category, prodDescription, prodURL, amount
-            FROM Products;`
+            FROM Products;
+            `
     
             db.query(strQry, (err, results) => {
-                if (err) throw new Error(err)
+                if (err) throw new Error('Unable to fetch all products')
                 res.json({
                     status: res.statusCode,
-                    results
+                    results //creates a key and assigns a value to it 
                 })
             })
         }
@@ -22,8 +23,31 @@ class Products {
         }
     }
 
-    fetchProducts(req, res) {
-        router.get('/products/:id', (req, res) => {
+    recentProducts(req, res) {
+        try{
+            const strQry = `
+            SELECT productID, prodName, category, prodDescription, prodURL, amount
+            FROM Products
+            ORDER BY productID DESC
+            LIMIT 5;
+            `
+
+            db.query(strQry, (err, results) => {
+                if (err) throw new Error('Unable to retrieve recent products')
+                res.json({
+                    status: res.statusCode,
+                    results
+            })
+            })
+        } catch(e) {
+            res.json({
+                status: 404,
+                msg: e.message
+            })
+        }
+    }
+
+    fetchProduct(req, res) {
             try{
                 const stryQry = `
                 SELECT productID, prodName, category, prodDescription, prodURL, amount
@@ -32,7 +56,7 @@ class Products {
                     if(err) throw new Error('Issue when retrieving a user.')
                         res.json({
                        status: res.statusCode,
-                       result: result[0]
+                       result: result[0]  //result for a single product 
                     })
                 })
             } catch (e) {
@@ -41,31 +65,22 @@ class Products {
                     msg:e.message
                 })
             }
-        })
     }
 
-    async addProduct(req, res) {
-        try {
-            let data = req.body
-             
-            let strQry = `
+    addProduct(req, res) {
+        try {  
+            const strQry = `
             INSERT INTO Products
             SET ? ;   
             `  // or you can use this VALUES (?, ? , ?, ?)
-            db.query(strQry, [data], (err) =>{
-                if(err) {
+            db.query(strQry, [req.body], (err) =>{
+                if(err) throw new Error ('Unable to add a new product')
                     res.json({
                         status: res.statusCode,
-                        msg: 'Could not add product.'
+                        msg: 'Product was added'
                     })
-                } else{
-                    const token = createToken(user)
-                    res.json({
-                        token,
-                        msg: 'You have successfully added a new product'
-                    })
-                }
-            })
+        })
+        
         } catch(e) {
             res.json({
                 status: 400, // Mistake on the clients side (Maybe syntax error)
@@ -74,20 +89,18 @@ class Products {
         }
     }
     
-    async updateProduct(req, res) {
+    updateProduct(req, res) {
         try {
-            let data = req.body
-
             const strQry = `
             UPDATE Products
             SET ?
             WHERE productID = ${req.params.id}
             `  
-            db.query (strQry, [data], (err) => {
+            db.query (strQry, [req.body], (err) => {
                 if (err) throw new Error ('Unable to update a product')
                     res.json({
                         status: res.statusCode,
-                        msg: 'The product record was updated.'
+                        msg: 'Product was updated.'
                 })
             })
         } catch(e) {
@@ -108,7 +121,7 @@ class Products {
                 if(err) throw new Error('To delete a product, please review your delete query.')
                     res.json({
                         status: res.statusCode,
-                        msg: 'A product\'s information was removed'
+                        msg: 'A product was removed.'
                 })
             })
         } catch(e) {
