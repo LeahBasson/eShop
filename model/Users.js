@@ -1,6 +1,6 @@
 import { connection as db} from '../config/index.js'
-import { createToken } from '../middleware/AuthenticateUser.js'
-import { hash, compare } from 'bcrypt'
+import {createToken} from '../middleware/AuthenticateUser.js'
+import {compare, hash} from 'bcrypt'
 
 class Users {
     fetchUsers(req, res) {
@@ -25,7 +25,6 @@ class Users {
     }
 
     fetchUser(req, res) {
-        router.get('/users/:id', (req, res) => {
             try{
                 const stryQry = `
                 SELECT userID, firstName, lastName, age, emailAdd, UserRole, ProfileURL
@@ -43,7 +42,6 @@ class Users {
                     msg:e.message
                 })
             }
-        })
     }
 
     async registerUser(req, res) {
