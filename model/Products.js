@@ -29,7 +29,7 @@ class Products {
             SELECT productID, prodName, category, prodDescription, prodURL, amount
             FROM Products
             ORDER BY productID DESC
-            LIMIT 5;
+            LIMIT 5; 
             `
 
             db.query(strQry, (err, results) => {
