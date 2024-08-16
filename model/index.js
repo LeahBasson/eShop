@@ -1,6 +1,10 @@
-import { Users } from "./Users";
+import { Users } from "./Users.js";
+import { Products } from "./Products.js";
 
-const users = new Users()
+//creating an object
+const users = new Users() 
+const products = new Products()
 export {
-    users 
+    users,
+    products
 }
