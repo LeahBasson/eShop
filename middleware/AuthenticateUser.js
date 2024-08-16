@@ -34,5 +34,6 @@ function verifyAToken(req, res, next) {  //how you know its a middleware is beca
     }
 }
 export {
-    createToken
+    createToken,
+    verifyAToken
 }

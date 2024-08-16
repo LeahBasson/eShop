@@ -6,12 +6,12 @@ import path from 'path'
 //Create an express app 
 const app = express()
 const port = +process.env.PORT || 4000
-const router = express.Router()
 
 //Middleware - Middleware is software that lies between an operating system and the applications running on it. 
-app.use(router ,
- '/user', userRouter,  //to get all the endpoints 
- '/product' , productRouter,
+app.use('/user', userRouter) //to get all the endpoints  //Brackets to parse a string
+app.use('/product' , productRouter)
+
+app.use(
  express.static('./static'),
  express.json(), 
  express.urlencoded({
@@ -19,12 +19,12 @@ app.use(router ,
 }))
 
 //Endpoint // the get endpoint allows you to retrieve something
-router.get('^/$|/eShop', (req, res) => {
+app.get('^/$|/eShop', (req, res) => {
     res.status(200).sendFile(path.resolve('./static/html/index.html'))
 })
 
 //If you looking for something that doesnt exist
-router.get ('*', (req, res) => {
+app.get ('*', (req, res) => {
     res.json({
         status: 404,
         msg: 'Resource Not Found'

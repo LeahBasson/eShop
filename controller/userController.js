@@ -18,11 +18,11 @@ userRouter.post('/register', (req, res) => {
     users.regiterUser(req, res)
 })
 
-userRouter.patch('/user/:id', (req, res) => {
+userRouter.patch('/:id', (req, res) => {
     users.updateUser(req, res)
 })
 
-userRouter.delete('/user/:id', (req, res) => {
+userRouter.delete('/:id', (req, res) => {
     users.deleteUser(req, res)
 })
 
