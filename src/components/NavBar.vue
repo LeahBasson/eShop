@@ -19,9 +19,6 @@
                 <li class="nav-item mt-2">
                     <router-link class="nav-link" aria-current="page" to="/about">About</router-link>
                 </li>
-                <li class="nav-item mt-2">
-                    <a class="nav-link" aria-current="page" href="#contact">Contact</a>
-                </li>
               </ul>
               
 
@@ -42,7 +39,7 @@
 
 <style scoped>
 img[alt='logo']{
-    width: 15rem;
+    width: 13.5rem;
     object-fit: cover;
     object-position: center;
     transition: all .5s;

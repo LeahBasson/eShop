@@ -6,6 +6,14 @@
     box-sizing: border-box;
 }
 
+/* custom variables */
+:root{
+  --primary: black;
+  --secondary: white;
+  --alternative: #95AFD8;
+  --awesome: #5D7599;
+}
+
 ::-webkit-scrollbar{
     display: none;
 }
@@ -31,3 +39,4 @@
   nav a.router-link-exact-active {
     color: #42b983;
   }
+

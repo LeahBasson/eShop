@@ -14,12 +14,27 @@
 
 <script>
 export default {
-    components: {
-        name: "CardComp"
-    }
+  name: 'CardComp' 
 }
 </script>
 
 <style scoped>
+  .card {
+    width: 18rem;
+    border-radius: 0%;
+    border: 2px solid var(--alternative);
+    padding: 0;
+}
 
+.card-header{
+    border-bottom: 2px solid var(--alternative);
+}
+
+@media (width < 999px)
+{ 
+    .card{
+  width: 13rem;
+  margin: auto;
+}
+}
 </style>
