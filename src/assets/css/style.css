@@ -31,3 +31,8 @@
   nav a.router-link-exact-active {
     color: #42b983;
   }
+
+  .wrapper{
+    display: grid;
+    grid-template-rows: auto minmax(100dvh, 100%) auto;
+}
