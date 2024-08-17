@@ -11,7 +11,7 @@ productRouter.get('/', verifyAToken, (req, res) => {   //a middleware which is v
     products.fetchProducts(req, res) 
 })
 
-productRouter.get('/recent', verifyAToken, (req, res) => {  
+productRouter.get('/recent', (req, res) => {  
     products.recentProducts(req, res) 
 })
 
@@ -19,7 +19,7 @@ productRouter.get ('/:id', verifyAToken, (req, res) => {
     products.fetchProduct(req, res)
 })
 
-productRouter.post('/add',  verifyAToken, (req, res) => {
+productRouter.post('/add', (req, res) => {
     products.addProduct(req, res)
 })
 
