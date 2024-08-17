@@ -18,7 +18,7 @@ class Products {
          catch(e){
             res.json({
                 status: 404,
-                msg: e.message
+                err: e.message
             })
         }
     }
@@ -42,7 +42,7 @@ class Products {
         } catch(e) {
             res.json({
                 status: 404,
-                msg: e.message
+                err: e.message
             })
         }
     }
@@ -62,7 +62,7 @@ class Products {
             } catch (e) {
                 res.json({
                     status: 404,
-                    msg:e.message
+                    err:e.message
                 })
             }
     }
@@ -84,7 +84,7 @@ class Products {
         } catch(e) {
             res.json({
                 status: 400, // Mistake on the clients side (Maybe syntax error)
-                msg: e.message //The error message from the if statement
+                err: e.message //The error message from the if statement
         })
         }
     }
@@ -106,7 +106,7 @@ class Products {
         } catch(e) {
             res.json({
                 status: 400,
-                msg: e.message //The error message from the if statement
+                err: e.message //The error message from the if statement
         })
         }
     }
@@ -127,7 +127,7 @@ class Products {
         } catch(e) {
             res.json({
                 status: 404, //Resource not found
-                msg: e.message
+                err: e.message
             })
         }
     }
