@@ -23,7 +23,7 @@ productRouter.post('/add', verifyAToken, (req, res) => {
     products.addProduct(req, res)
 })
 
-productRouter.patch('/:id',(req, res) => {
+productRouter.patch('/:id', verifyAToken, (req, res) => {
     products.updateProduct(req, res)
 })
 
