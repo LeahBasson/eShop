@@ -1,45 +1,53 @@
 <template>
-     <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-          <router-link to="/"><img class="img-fluid" src="https://leahbasson.github.io/MyImages/skincareWebsite/skincareLogo2.gif" alt="logo" loading="eager"></router-link>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+      <div class="container-fluid">
+          <router-link class="navbar-brand" to="/">
+              <img src="https://leahbasson.github.io/MyImages/skincareWebsite/skincareLogo2.gif" loading="lazy" alt="logo">
+          </router-link>
           <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img class="img-fluid" src="https://leahbasson.github.io/MyImages/skincareWebsite/skincareLogo2.gif" alt="logo" loading="eager"></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-                <li class="nav-item mt-2">
-                  <router-link class="nav-link" aria-current="page" to="/">Home</router-link>
-                </li>
-                <li class="nav-item mt-2">
-                    <router-link class="nav-link" aria-current="page" to="/about">About</router-link>
-                </li>
-              </ul>
-              
-
-              <ul class="navbar-nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#account"><i class="bi bi-person"></i></a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <router-link class="nav-link" aria-current="page" to="/">Home</router-link>
                   </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#bag"><i class="bi bi-bag"></i></a>
-                </li> -->
+                  <li class="nav-item">
+                      <router-link class="nav-link" to="/about">About</router-link>
+                  </li>
+                  <li class="nav-item">
+                      <router-link class="nav-link" to="/products">Products</router-link>
+                  </li>
+                  <li class="nav-item">
+                      <router-link class="nav-link" to="/checkout">Checkout</router-link>
+                  </li>
+                  <li class="nav-item">
+                      <router-link class="nav-link" to="/admin">Admin</router-link>
+                  </li>
+                  <li class="nav-item">
+                      <router-link class="nav-link" to="/reachUs">Reach us</router-link>
+                  </li>
+                  <ul class="userAccount navbar-nav">
+                      <li class="nav-item">
+                          <router-link class="nav-link" to="/login">Login</router-link>
+                      </li>
+                      <li class="nav-item">
+                          <router-link class="nav-link" to="/logout">Logout</router-link>
+                      </li>
+                      <li class="nav-item">
+                          <router-link class="nav-link" to="/signup">Register</router-link>
+                      </li>
+                  </ul>
               </ul>
-            </div>
-    
           </div>
-        </div>
-      </nav>
+      </div>
+  </nav>
 </template>
 
 <style scoped>
 img[alt='logo']{
-    width: 13.5rem;
+    width: 10rem;
+    aspect-ratio: 2/1;
     object-fit: cover;
     object-position: center;
     transition: all .5s;
@@ -48,15 +56,4 @@ img[alt='logo']{
 img[alt='logo']:hover{
   transform: scale(1.1);
 }
-
-.nav-link{
-    color: black;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-}
-
-.nav-link:hover{
-    color: #5D7599; 
-}
-
 </style>

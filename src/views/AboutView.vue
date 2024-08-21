@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="display-2">About</div>
+    <div class="container">
+      <div class="row">
+        <h2 class="display-2">About</h2>
+      </div>
     </div>
-  </div>
-</template>
+  </template>

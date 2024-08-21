@@ -18,25 +18,72 @@
     display: none;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Display - grid */
+:is(#app) {
+  display: grid;
+}
+
+/* Display - flex */
+
 /* APP */
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
+  grid-template-rows: auto minmax(100dvh, 100%) auto;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+/* All images */
+img {
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Logo */
+img[alt='logo'] {
+  width: 5rem;
+}
+
+/* Login */
+:is(.form-control-wrapper) {  
+  margin-block: .4rem;
+  & button {
+      margin-block: .3rem;
   }
-  
-  nav {
-    padding: 30px;
+}
+
+/* Media query */
+/* width 100% */
+@media screen and (width < 900px) {
+  :is(.form-control-wrapper button) {
+      width: 100%;
   }
-  
-  nav a {
-    font-weight: bold;
-    color: #2c3e50;
-  }
-  
-  nav a.router-link-exact-active {
-    color: #42b983;
-  }
+}
+
+/* With Subgrid,
+we may set the col or row of the inner grid to rely on the parent rows and columns. */
 
